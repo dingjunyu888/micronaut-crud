@@ -3,7 +3,7 @@ name: Build and Test on PR Merge
 on:
   push:
     branches:
-      - main
+      - jdbc
 
 jobs:
   build-and-test:
