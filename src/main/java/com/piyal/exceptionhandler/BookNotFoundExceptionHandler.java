@@ -20,7 +20,6 @@ public class BookNotFoundExceptionHandler
     @Override
     public HttpResponse<ErrorMessage> handle(HttpRequest request, BookNotFoundException exception) {
         CustomError notFound = new CustomError(HttpStatus.NOT_FOUND.getReason(), HttpStatus.NOT_FOUND.getCode());
-        System.out.println("Test");
         return HttpResponse.notFound(new ErrorMessage(notFound));
     }
 }
