@@ -3,17 +3,21 @@ name: Build and Test on PR Merge
 on:
   push:
     branches:
-      - jdbc
+      - jdbc  # Ensure this targets the correct branches
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+      JDBC_URL: ${{ secrets.JDBC_URL }}
+      JDBC_USERNAME: ${{ secrets.JDBC_USERNAME }}
+      JDBC_PASSWORD: ${{ secrets.JDBC_PASSWORD }}
 
     services:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ROOT_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: ${{ secrets.JDBC_PASSWORD }}
           MYSQL_DATABASE: testdb
         ports:
           - 3306:3306
